@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>割り勘トラベル</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+</head>
+<body>
+<iframe id="app" title="割り勘トラベル" allow="clipboard-write"></iframe>
+<script>
+  var EXEC_BASE = "https://script.google.com/macros/s/AKfycbxQ9fgIM7hs8bCRAQp2Hpv4ucG02V9o1EDBPTl0XWM6ujB8dVQYej6hI5ykpp3EXShSBA/exec";
+  document.getElementById("app").src = EXEC_BASE + window.location.search;
+</script>
+</body>
+</html>
