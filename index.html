@@ -24,6 +24,25 @@
 <iframe id="app" title="割り勘トラベル" allow="clipboard-write"></iframe>
 <script>
   var EXEC_BASE = "https://script.google.com/macros/s/AKfycbxQ9fgIM7hs8bCRAQp2Hpv4ucG02V9o1EDBPTl0XWM6ujB8dVQYej6hI5ykpp3EXShSBA/exec";
+  var BASE_TITLE = "割り勘トラベル";
+
+  // タブの見出しは一番外側のこのページが決めるが、グループ名を知っているのは
+  // iframeの中のアプリなので、postMessageで受け取って差し替える。
+  // 複数のグループを別タブで開いたときに、見出しだけでどのタブか分かるようにする。
+  // 送り元はApps Scriptがアプリを描画するサンドボックス(*.googleusercontent.com)に
+  // 限定する。受け取るのは文字列1つで、document.title に入れるだけ。
+  window.addEventListener("message", function (event) {
+    if (!/^https:\/\/[a-z0-9-]+\.googleusercontent\.com$/i.test(event.origin)) {
+      return;
+    }
+    var data = event.data;
+    if (!data || data.type !== "warikan:title") {
+      return;
+    }
+    var groupName = typeof data.groupName === "string" ? data.groupName.trim() : "";
+    document.title = groupName ? groupName + " | " + BASE_TITLE : BASE_TITLE;
+  });
+
   document.getElementById("app").src = EXEC_BASE + window.location.search;
 </script>
 </body>
