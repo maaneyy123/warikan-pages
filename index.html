@@ -2,7 +2,12 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Pixelの Chrome で、画面下部の入力欄でキーボードを出したあと iframe 内のタップ位置が
+     キーボードの高さ分ずれる不具合を確認した。Android版Chromeの既定(resizes-visual)では
+     キーボードが出ても iframe の高さが変わらないため、resizes-content で iframe ごと
+     キーボードの上まで縮め、入力欄を見せるスクロールを iframe の中だけで済ませる。
+     iOS の Safari はこの指定に対応しておらず無視する。 -->
+<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
 <title>割り勘トラベル</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
