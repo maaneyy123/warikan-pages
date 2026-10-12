@@ -11,11 +11,13 @@
 <title>割り勘トラベル</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
+  /* overflow: hidden は付けない。Android の Chrome の「引き下げて更新」は、一番外側の要素に
+     overflow-y: hidden があると働かない(Chromium の ui/android/overscroll_refresh.h)。
+     iframe がちょうど画面の高さなので、付けなくてもこのページ自体はスクロールしない。 */
   html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;
   }
   iframe {
     display: block;
